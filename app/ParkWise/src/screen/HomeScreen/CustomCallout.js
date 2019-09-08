@@ -1,0 +1,65 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import {Callout} from 'react-native-maps';
+import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+
+const propTypes = {
+  children: PropTypes.node.isRequired,
+  style: PropTypes.object,
+};
+
+class CustomCallout extends React.Component {
+  render() {
+    const {price, hours} = this.props
+    return (
+      <Callout onPress={() => this.props.navigation.navigate('Booking')}>
+        <View>
+          <Text>{'Price/hour:' + price}</Text>
+          <Text>{'Time: ' + hours}</Text>
+          <Text>Click to book!</Text>
+        </View>
+      </Callout>
+    );
+  }
+}
+
+CustomCallout.propTypes = propTypes;
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+    alignSelf: 'flex-start',
+  },
+  bubble: {
+    width: 140,
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    backgroundColor: '#4da2ab',
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 6,
+    borderColor: '#007a87',
+    borderWidth: 0.5,
+  },
+  amount: {
+    flex: 1,
+  },
+  arrow: {
+    backgroundColor: 'transparent',
+    borderWidth: 16,
+    borderColor: 'transparent',
+    borderTopColor: '#4da2ab',
+    alignSelf: 'center',
+    marginTop: -32,
+  },
+  arrowBorder: {
+    backgroundColor: 'transparent',
+    borderWidth: 16,
+    borderColor: 'transparent',
+    borderTopColor: '#007a87',
+    alignSelf: 'center',
+    marginTop: -0.5,
+  },
+});
+
+export default CustomCallout;
